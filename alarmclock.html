@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="alarmclock.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Alarm Clock By Manash Mishra</h1>
+        <div class="outer">
+            <div class="outer2">
+                <div class="inner" id="timeDisplay">10:38 AM</div>
+            </div>
+        </div>
+        <div class="lower"></div>
+        <div class="lower2"></div>
+    </center>
+
+    <script>
+        
+        function updateTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+
+           
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+
+            
+            minutes = addLeadingZero(minutes);
+            seconds = addLeadingZero(seconds);
+
+            var timeString = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+            document.getElementById('timeDisplay').innerText = timeString;
+        }
+
+        
+        function addLeadingZero(number) {
+            return (number < 10 ? '0' : '') + number;
+        }
+
+        
+        setInterval(updateTime, 100);
+    </script>
+</body>
+</html>
